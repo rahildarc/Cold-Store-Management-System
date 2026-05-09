@@ -81,4 +81,15 @@
     padding: 4px;
     display: flex;
     justify-content: space-between;
+}.chamber-card {
+    min-height: 80px; /* Adjust this to make the boxes look balanced */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chamber-card .p-2 {
+    flex-grow: 1;
+    display: flex;
+    align-items: center; /* This centers the Bal Qty vertically */
 }
