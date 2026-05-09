@@ -42,19 +42,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = `chamber-card ${ch.type === 'yellow' ? 'chamber-yellow' : 'chamber-white'} shadow-sm`;
         
-        card.innerHTML = `
-            <div class="chamber-header">
-                <span><i class="fa fa-lock text-[9px]"></i> ${ch.name}</span>
-                <i class="fa fa-ellipsis-v"></i>
-            </div>
-            <div class="p-2 space-y-1">
-                <div class="flex justify-between"><span>In Qty</span><span class="font-bold">${inQty}</span></div>
-                <div class="flex justify-between"><span>Out Qty</span><span class="font-bold">${outQty}</span></div>
-                <div class="flex justify-between border-t pt-1 font-extrabold text-blue-900">
-                    <span>Bal Qty</span><span>${balQty}</span>
-                </div>
-            </div>
-        `;
+        // Inside your chambers.forEach(ch => { ... }) loop:
+
+card.innerHTML = `
+    <div class="chamber-header">
+        <span><i class="fa fa-lock text-[9px]"></i> ${ch.name}</span>
+        <i class="fa fa-ellipsis-v"></i>
+    </div>
+    <div class="p-2">
+        <!-- In Qty and Out Qty rows have been removed -->
+        <div class="flex justify-between font-extrabold text-blue-900 text-sm mt-1">
+            <span>Bal Qty</span>
+            <span>${balQty}</span>
+        </div>
+    </div>
+`;
         grid.appendChild(card);
     });
 });
