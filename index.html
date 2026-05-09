@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abraq Agro | Cold Store Management</title>
+    <!-- Tailwind for Layout, FontAwesome for Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex h-screen overflow-hidden bg-gray-100">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar w-64 text-white flex flex-col overflow-y-auto">
+        <div class="logo-area p-4 border-b border-gray-700 flex items-center gap-3">
+            <div class="w-8 h-8 bg-orange-500 rounded flex items-center justify-center font-bold">A</div>
+            <span class="text-xl font-bold tracking-tighter">ABRAQ <small class="font-light">agro</small></span>
+        </div>
+
+        <nav class="mt-4 flex-1">
+            <!-- Navigation items match your sidebar screenshots exactly -->
+            <div class="nav-item active" onclick="showPage('dashboard')">
+                <i class="fa fa-home"></i> <span>Dashboard</span>
+            </div>
+
+            <div class="nav-group">
+                <div class="nav-item">
+                    <i class="fa fa-users"></i> <span>Grower Management</span>
+                    <i class="fa fa-chevron-down ml-auto text-xs"></i>
+                </div>
+                <div class="sub-menu">
+                    <a href="#" onclick="showPage('growers')">Grower Group</a>
+                    <a href="#" onclick="showPage('grower-report')">Reports</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <div class="nav-item">
+                    <i class="fa fa-download"></i> <span>Transactions In</span>
+                    <i class="fa fa-chevron-down ml-auto text-xs"></i>
+                </div>
+                <div class="sub-menu">
+                    <a href="#">Preinward</a>
+                    <a href="#">Quality</a>
+                    <a href="#">Dockyard</a>
+                    <a href="#">Chamber Location</a>
+                </div>
+            </div>
+
+            <div class="nav-item">
+                <i class="fa fa-eye"></i> <span>View Chambers</span>
+            </div>
+
+            <div class="nav-group">
+                <div class="nav-item">
+                    <i class="fa fa-upload"></i> <span>Transactions Out</span>
+                    <i class="fa fa-chevron-down ml-auto text-xs"></i>
+                </div>
+                <div class="sub-menu">
+                    <a href="#">Calendar</a>
+                    <a href="#">Demand Order</a>
+                    <a href="#">Store Out</a>
+                    <a href="#">Packing Draft</a>
+                    <a href="#">Packing Order</a>
+                    <a href="#">Dispatch</a>
+                    <a href="#">Final Outward</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <div class="nav-item">
+                    <i class="fa fa-chart-line"></i> <span>Transaction In Reports</span>
+                    <i class="fa fa-chevron-down ml-auto text-xs"></i>
+                </div>
+                <div class="sub-menu">
+                    <a href="#">Preinward Report</a>
+                    <a href="#">Inward Report</a>
+                    <a href="#">Quality Report</a>
+                    <a href="#">Stock Aggregate</a>
+                    <a href="#">Inward Ledger</a>
+                </div>
+            </div>
+
+            <div class="nav-group">
+                <div class="nav-item">
+                    <i class="fa fa-chart-pie"></i> <span>Transaction Out Reports</span>
+                    <i class="fa fa-chevron-down ml-auto text-xs"></i>
+                </div>
+                <div class="sub-menu">
+                    <a href="#">Stock Report</a>
+                    <a href="#">Packing Draft Ledger</a>
+                    <a href="#">Packing Draft Stock</a>
+                    <a href="#">Final Outward Reports</a>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 flex flex-col overflow-hidden">
+        <!-- Top Header -->
+        <header class="bg-white shadow-sm p-4 px-8 flex justify-between items-center border-b">
+            <h2 id="page-title" class="text-gray-600 font-bold">Dashboard</h2>
+            <div class="flex items-center gap-4 text-sm">
+                <span class="font-medium">Welcome, IT || Shahid || Unit:A:6</span>
+                <div class="flex gap-2">
+                    <button class="header-btn"><i class="fa fa-lock"></i> Password</button>
+                    <button class="header-btn"><i class="fa fa-sign-out"></i> Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dynamic Content Area -->
+        <div class="flex-1 overflow-y-auto p-6" id="content-container">
+            
+            <!-- Dashboard View -->
+            <div id="page-dashboard" class="view-page">
+                <div class="flex justify-between items-center mb-6 bg-white p-4 rounded shadow-sm">
+                    <div class="flex gap-10 font-bold text-gray-700">
+                        <span>Total In Qty: <span class="text-blue-600">1,243,355</span></span>
+                        <span>Total Out Qty: <span class="text-red-600">812,110</span></span>
+                        <span>Balance Qty: <span class="text-green-600">431,245</span></span>
+                    </div>
+                    <div class="legend flex gap-4 text-[10px] font-bold uppercase">
+                        <span class="flex items-center gap-1"><i class="w-3 h-3 bg-orange-500 rounded-full"></i> Upto 9.9%</span>
+                        <span class="flex items-center gap-1"><i class="w-3 h-3 bg-green-600 rounded-full"></i> 10%-90%</span>
+                        <span class="flex items-center gap-1"><i class="w-3 h-3 bg-red-600 rounded-full"></i> Above 90%</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3" id="chamber-grid">
+                    <!-- Javascript will populate this -->
+                </div>
+            </div>
+
+            <!-- Grower Report View -->
+            <div id="page-grower-report" class="view-page hidden">
+                <div class="bg-white p-6 rounded shadow border">
+                    <h3 class="text-lg font-bold mb-4 border-b pb-2">Grower Report</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+                        <div class="form-group">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Date From</label>
+                            <input type="date" class="w-full border rounded p-2 text-sm" value="2026-05-09">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Date To</label>
+                            <input type="date" class="w-full border rounded p-2 text-sm" value="2026-05-09">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Grower Group</label>
+                            <select class="w-full border rounded p-2 text-sm">
+                                <option>003-King Fruits Company</option>
+                                <option>004-Mohd Ayoub Sheikh and Sons</option>
+                                <option>008-Abrar Raina</option>
+                                <option>010-Suhail Fruit Agency</option>
+                            </select>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="bg-indigo-800 text-white px-5 py-2 rounded text-sm hover:bg-indigo-900 transition">Preview</button>
+                            <button class="bg-indigo-800 text-white px-5 py-2 rounded text-sm hover:bg-indigo-900 transition">Contract</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
