@@ -1,62 +1,12 @@
-// Function to switch pages
-function showPage(pageId) {
-    // Hide all pages
-    document.querySelectorAll('.view-page').forEach(page => {
-        page.classList.add('hidden');
-    });
-    
-    // Show selected page
-    const target = document.getElementById(`page-${pageId}`);
-    if(target) target.classList.remove('hidden');
-    
-    // Update Header Title
-    document.getElementById('page-title').innerText = pageId.replace('-', ' ').toUpperCase();
-}
-
-// Generate Chamber Data dynamically
-document.addEventListener('DOMContentLoaded', () => {
-    const grid = document.getElementById('chamber-grid');
-    
-    // Exact list of chambers found in your screenshots
-    const chambers = [
-        { name: "CHAMBER 1", type: 'white' },
-        { name: "CHAMBER 2", type: 'white' },
-        { name: "DOCK 1", type: 'white' },
-        { name: "CHMB 4", type: 'yellow' },
-        { name: "CHMB 5", type: 'yellow' },
-        { name: "CHMB 6", type: 'yellow' },
-        { name: "CHMB 7", type: 'yellow' },
-        { name: "CHMB 8", type: 'yellow' }
-    ];
-
-    // Add remaining chambers up to 39
-    for (let i = 9; i <= 39; i++) {
-        chambers.push({ name: `CHMB ${i}`, type: 'yellow' });
-    }
-
-    chambers.forEach(ch => {
-        const inQty = Math.floor(Math.random() * 50000) + 10000;
-        const outQty = Math.floor(Math.random() * 8000);
-        const balQty = inQty - outQty;
-
-        const card = document.createElement('div');
-        card.className = `chamber-card ${ch.type === 'yellow' ? 'chamber-yellow' : 'chamber-white'} shadow-sm`;
-        
-        // Inside your chambers.forEach(ch => { ... }) loop:
-
-card.innerHTML = `
-    <div class="chamber-header">
-        <span><i class="fa fa-lock text-[9px]"></i> ${ch.name}</span>
-        <i class="fa fa-ellipsis-v"></i>
-    </div>
-    <div class="p-2">
-        <!-- In Qty and Out Qty rows have been removed -->
-        <div class="flex justify-between font-extrabold text-blue-900 text-sm mt-1">
-            <span>Bal Qty</span>
-            <span>${balQty}</span>
-        </div>
-    </div>
-`;
-        grid.appendChild(card);
-    });
-});
+.sidebar { background-color: #343a40; }
+.nav-item { padding: 10px 20px; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #ced4da; transition: 0.2s; }
+.nav-item:hover { background-color: #495057; color: white; }
+.nav-item.active { background-color: #495057; border-left: 4px solid #fd7e14; color: white; }
+.sub-menu { background-color: #2c3136; display: none; }
+.nav-group:hover .sub-menu { display: block; }
+.sub-menu a { display: block; padding: 8px 10px 8px 45px; font-size: 13px; color: #adb5bd; }
+.sub-menu a:hover { color: white; }
+.header-btn { border: 1px solid #dee2e6; padding: 4px 12px; border-radius: 4px; background: #f8f9fa; }
+.chamber-card { border: 1px solid #dee2e6; border-radius: 2px; }
+.chamber-yellow { background-color: #ffff00; }
+.bg-white { background-color: #ffffff; }
