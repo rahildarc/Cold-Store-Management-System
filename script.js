@@ -1,12 +1,50 @@
-.sidebar { background-color: #343a40; }
-.nav-item { padding: 10px 20px; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #ced4da; transition: 0.2s; }
-.nav-item:hover { background-color: #495057; color: white; }
-.nav-item.active { background-color: #495057; border-left: 4px solid #fd7e14; color: white; }
-.sub-menu { background-color: #2c3136; display: none; }
-.nav-group:hover .sub-menu { display: block; }
-.sub-menu a { display: block; padding: 8px 10px 8px 45px; font-size: 13px; color: #adb5bd; }
-.sub-menu a:hover { color: white; }
-.header-btn { border: 1px solid #dee2e6; padding: 4px 12px; border-radius: 4px; background: #f8f9fa; }
-.chamber-card { border: 1px solid #dee2e6; border-radius: 2px; }
-.chamber-yellow { background-color: #ffff00; }
-.bg-white { background-color: #ffffff; }
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('chamber-grid');
+    const totalBoxes = 39; 
+
+    for (let i = 1; i <= totalBoxes; i++) {
+        let chamberName = "";
+        let bgColorClass = "chamber-yellow"; 
+
+        if (i === 1) { 
+            chamberName = "CHAMBER 1"; 
+            bgColorClass = "bg-white"; 
+        } else if (i === 2) { 
+            chamberName = "Chamber 2"; 
+            bgColorClass = "bg-white"; 
+        } else if (i === 3) { 
+            chamberName = "Dock 1"; 
+            bgColorClass = "bg-white"; 
+        } else { 
+            chamberName = `CHMB-${i - 3}`; 
+        }
+
+        const card = document.createElement('div');
+        card.className = `chamber-card p-2 text-xs shadow-sm ${bgColorClass}`;
+        
+        card.innerHTML = `
+            <div class="flex items-center gap-1 font-bold border-b border-gray-300 mb-1 uppercase text-[10px]">
+                <i class="fa fa-lock"></i> <span>${chamberName}</span>
+            </div>
+            <div class="space-y-0.5 text-[11px]">
+                <div class="flex justify-between">
+                    <span>In Qty</span>
+                    <span class="font-medium">0000</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Out Qty</span>
+                    <span class="font-medium">0000</span>
+                </div>
+                <div class="flex justify-between font-bold border-t border-gray-300 mt-1 pt-0.5">
+                    <span>Bal Qty</span>
+                    <span>0000</span>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    }
+});
+
+function showPage(pageId) {
+    document.getElementById('page-title').innerText = pageId.toUpperCase();
+}
