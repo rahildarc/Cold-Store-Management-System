@@ -1,95 +1,12 @@
-/* Sidebar Styling */
-.sidebar {
-    background-color: #2c3136;
-}
-
-.nav-item {
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    transition: all 0.2s;
-    font-size: 14px;
-    color: #cbd5e0;
-}
-
-.nav-item:hover {
-    background-color: #3e444a;
-    color: white;
-}
-
-.nav-item.active {
-    background-color: #4a5568;
-    border-left: 4px solid #ed8936;
-    color: white;
-}
-
-.sub-menu {
-    background-color: #1a202c;
-    display: none;
-}
-
-.nav-group:hover .sub-menu {
-    display: block;
-}
-
-.sub-menu a {
-    display: block;
-    padding: 8px 10px 8px 50px;
-    font-size: 13px;
-    color: #a0aec0;
-    text-decoration: none;
-}
-
-.sub-menu a:hover {
-    color: white;
-    background-color: #2d3748;
-}
-
-/* Header Buttons */
-.header-btn {
-    border: 1px solid #e2e8f0;
-    padding: 4px 12px;
-    border-radius: 4px;
-    background: #f7fafc;
-    transition: background 0.2s;
-}
-
-.header-btn:hover {
-    background: #edf2f7;
-}
-
-/* Chamber Grid Styling */
-.chamber-card {
-    border: 1px solid #e2e8f0;
-    border-radius: 2px;
-    font-size: 11px;
-}
-
-.chamber-yellow {
-    background-color: #ffff00; /* As seen in home_2.png */
-}
-
-.chamber-white {
-    background-color: #ffffff;
-}
-
-.chamber-header {
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    font-weight: bold;
-    padding: 4px;
-    display: flex;
-    justify-content: space-between;
-}.chamber-card {
-    min-height: 80px; /* Adjust this to make the boxes look balanced */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.chamber-card .p-2 {
-    flex-grow: 1;
-    display: flex;
-    align-items: center; /* This centers the Bal Qty vertically */
-}
+.sidebar { background-color: #343a40; }
+.nav-item { padding: 10px 20px; cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #ced4da; transition: 0.2s; }
+.nav-item:hover { background-color: #495057; color: white; }
+.nav-item.active { background-color: #495057; border-left: 4px solid #fd7e14; color: white; }
+.sub-menu { background-color: #2c3136; display: none; }
+.nav-group:hover .sub-menu { display: block; }
+.sub-menu a { display: block; padding: 8px 10px 8px 45px; font-size: 13px; color: #adb5bd; }
+.sub-menu a:hover { color: white; }
+.header-btn { border: 1px solid #dee2e6; padding: 4px 12px; border-radius: 4px; background: #f8f9fa; }
+.chamber-card { border: 1px solid #dee2e6; border-radius: 2px; }
+.chamber-yellow { background-color: #ffff00; }
+.bg-white { background-color: #ffffff; }
